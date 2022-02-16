@@ -1,5 +1,5 @@
-import * as selectors from './modules/selectors.js';
 import _ from 'lodash';
+import * as selectors from './modules/selectors.js';
 import './style.css';
 
 class updateUi {
@@ -13,16 +13,16 @@ class updateUi {
 
 	static taskArr = selectors.taskArr;
 
-	// populating the ul with task 
+	// populating the ul with task
 
 	static addTasks(arrs) {
-		updateUi.listblock.innerHTML = ' ';
-		arrs.forEach((arr) => {
-			const htmlTemp = `
+	  updateUi.listblock.innerHTML = ' ';
+	  arrs.forEach((arr) => {
+	    const htmlTemp = `
 			<li class="list-item" id="${arr.index}"><input type="checkbox" name="todo-1"><p contenteditable="true">${arr.desc}</p><button><i class="fas fa-ellipsis-v"></i></button></li>
 			`;
-			updateUi.listblock.insertAdjacentHTML('afterbegin', htmlTemp)
-		});
+	    updateUi.listblock.insertAdjacentHTML('afterbegin', htmlTemp);
+	  });
 	}
 }
 

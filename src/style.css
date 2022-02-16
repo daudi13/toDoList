@@ -60,7 +60,7 @@ ul li {
   display: flex;
   align-items: center;
   padding: 15px 10px;
-	border-top: 1px solid #a3a3a3;
+  border-top: 1px solid #a3a3a3;
 }
 
 ul li > p {
