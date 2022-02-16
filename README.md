@@ -7,7 +7,7 @@
 > This is a team project in the Microverse second Module. The project is a book application that enables a user to add and remove books to a list
 
 The endgoal of the project is to build a todo-list application using Vanilla JavaScript and ES6 Modules with webpack.   
-Click [here](https://daudi13.github.io/todo-list/) to get a live preview of the project. The project is supposed to be done in stages as follows
+Click [here](https://daudi13.github.io/toDoList/) to get a live preview of the project. The project is supposed to be done in stages as follows
 
 ### stages
 
