@@ -86,3 +86,8 @@ button:focus {
 button > i {
   color: #a3a3a1;
 }
+
+.btn > i {
+	color: #a3a3a1;
+	font-size: 12px;
+}
