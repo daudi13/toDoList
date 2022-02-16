@@ -17,7 +17,7 @@ Click [here](https://daudi13.github.io/toDoList/) to get a live preview of the p
 
 #### Cloning the project
 ```
-git clone  https://github.com/daudi13/todo-list<Your-Build-Directory>
+git clone  https://github.com/daudi13/toDoList/<Your-Build-Directory>
 ```
 
 ## Getting packages and debuging with Stylelint
