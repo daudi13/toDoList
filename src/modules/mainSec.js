@@ -16,7 +16,7 @@ static updateTask = () => {
   const taskItem = new NewItem(UpdateUi.input.value);
   UpdateUi.taskArr.push(taskItem);
   UpdateUi.taskArr.forEach((taskItem, pos) => {
-    taskItem.index = pos;
+    taskItem.index = pos + 1;
   });
   localStorage.setItem('taskItems', JSON.stringify(UpdateUi.taskArr));
   UpdateUi.input.value = '';
