@@ -21,7 +21,7 @@ class updateUi {
 		updateUi.taskArr.forEach((taskItem, pos) => {
 			taskItem.index = pos;
 		})
-		localStorage.setItem('taskItem', JSON.stringify(updateUi.taskArr));
+		localStorage.setItem('taskItems', JSON.stringify(updateUi.taskArr));
 		updateUi.input.value = '';
 		updateUi.addTasks(updateUi.taskArr);
 	}
