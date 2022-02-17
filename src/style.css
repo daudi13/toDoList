@@ -72,6 +72,10 @@ ul li > p:focus {
   outline: none;
 }
 
+.del {
+	display: none;
+}
+
 .btn,
 button {
   padding: 8px 10px;
