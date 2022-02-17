@@ -73,7 +73,7 @@ ul li > p:focus {
 }
 
 .del {
-	display: none;
+  display: none;
 }
 
 .btn,
@@ -97,17 +97,17 @@ button > i {
 }
 
 .bottom {
-	padding: 10px 15px;
-	border-top: 1px solid #c5c5c5;
+  padding: 10px 15px;
+  border-top: 1px solid #c5c5c5;
 }
 
 .bottom a {
-margin: 0 auto;
-color: #7a7a7a;
-text-decoration: none;
+  margin: 0 auto;
+  color: #7a7a7a;
+  text-decoration: none;
 }
 
 .bottom a:hover {
-	text-decoration: underline;
-	color: #1f1f1f;
+  text-decoration: underline;
+  color: #1f1f1f;
 }
