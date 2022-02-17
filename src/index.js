@@ -40,10 +40,10 @@ class updateUi {
 	  updateUi.listblock.innerHTML = ' ';
 	  arrs.forEach((arr, index) => {
 	    const htmlTemp = `
-			<li class="list-item" id="${index}"><input type="checkbox" name="todo-1"><p class="txt" contenteditable="true">${arr.task}</p><button class="btn-${index}"><i class="fas fa-ellipsis-v"></i></button></li>
+			<li class="list-item" id="${index}"><input type="checkbox" name="todo-1"><p class="txt" contenteditable="true">${arr.task}</p><button class="del-${index}"><i class="fa fa-trash-o"></i></button><button class="btn-${index}"><i class="fas fa-ellipsis-v"></i></button></li>
 			`;
 			updateUi.listblock.insertAdjacentHTML('beforeend', htmlTemp);
-			document.querySelectorAll(`.btn-${index}`).forEach(btn => btn.addEventListener('click', (e) => {
+			document.querySelectorAll(`.del-${index}`).forEach(btn => btn.addEventListener('click', (e) => {
 				e.preventDefault()
 				updateUi.delTask(arr, index);
 			}))
