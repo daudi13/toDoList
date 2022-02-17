@@ -1,4 +1,4 @@
-import _, { update } from 'lodash';
+import _ from 'lodash';
 import NewItem from './modules/listClass.js';
 import * as selectors from './modules/selectors.js';
 import './style.css';
@@ -18,17 +18,35 @@ class updateUi {
 	static updateTask() {
 		const taskItem = new NewItem(updateUi.input.value);
 		updateUi.taskArr.push(taskItem);
+		updateUi.taskArr.forEach((taskItem, pos) => {
+			taskItem.index = pos;
+		})
+		localStorage.setItem('taskItem', JSON.stringify(updateUi.taskArr));
 		updateUi.input.value = '';
 		updateUi.addTasks(updateUi.taskArr);
 	}
 
+	static delTask(taskItem, index) {
+		const taskBlock = document.getElementById(index);
+		updateUi.taskArr = updateUi.taskArr.filter((item) => item !== taskItem);
+		updateUi.taskArr.forEach((taskItem, pos) => {
+			taskItem.index = pos;
+		})
+		localStorage.setItem('taskItems', JSON.stringify(updateUi.taskArr));
+		updateUi.listblock.removeChild(taskBlock)
+	}
+
 	static addTasks(arrs) {
 	  updateUi.listblock.innerHTML = ' ';
-	  arrs.forEach((arr) => {
+	  arrs.forEach((arr, index) => {
 	    const htmlTemp = `
-			<li class="list-item" id="${arr.index}"><input type="checkbox" name="todo-1"><p contenteditable="true">${arr.task}</p><button><i class="fas fa-ellipsis-v"></i></button></li>
+			<li class="list-item" id="${index}"><input type="checkbox" name="todo-1"><p contenteditable="true">${arr.task}</p><button class="btn-${index}"><i class="fas fa-ellipsis-v"></i></button></li>
 			`;
-	    updateUi.listblock.insertAdjacentHTML('afterbegin', htmlTemp);
+			updateUi.listblock.insertAdjacentHTML('afterbegin', htmlTemp);
+			document.querySelectorAll(`.btn-${index}`).forEach(btn => btn.addEventListener('click', (e) => {
+				e.preventDefault()
+				updateUi.delTask(arr, index);
+			}))
 	  });
 	}
 }
