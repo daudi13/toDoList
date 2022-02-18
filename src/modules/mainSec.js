@@ -1,9 +1,6 @@
 import NewItem from './listClass.js';
 import * as selectors from './selectors.js';
-// eslint-disable-next-line import/no-cycle
-import {
-  clear,
-} from './interactive.js';
+import { clear } from './interactive.js';
 
 export default class UpdateUi {
   static taskArr = []
