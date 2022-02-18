@@ -41,11 +41,15 @@ static delTask = (taskItem, index) => {
       const htmlTemp = `
 <li class="item-${index}" id="${index}"><input type="checkbox" class="task-${index}" name="task-${index} value="job-${index}"><p class="txt" contenteditable="true">${arr.task}</p><button class="btn-${index}"><i class="fa fa-trash-o"></i></button></li>
 `;
-      UpdateUi.listblock.insertAdjacentHTML('beforeend', htmlTemp);
+			UpdateUi.listblock.insertAdjacentHTML('beforeend', htmlTemp);
+
+			// Remove Button
       document.querySelectorAll(`.btn-${index}`).forEach((btn) => btn.addEventListener('click', (e) => {
         e.preventDefault();
         UpdateUi.delTask(arr, index);
-      }));
+			}));
+			
+			// Edit Task description
       document.querySelectorAll('.txt').forEach((par, index) => {
         par.addEventListener('input', () => {
           if (par.textContent) {
@@ -60,11 +64,13 @@ static delTask = (taskItem, index) => {
         });
 			});
 
+			// Cancel tasks
 			document.querySelectorAll(`.task-${index}`).forEach((checkbox) => {
 				checkbox.addEventListener('change', () => {
 					document.querySelectorAll(`.item-${index}`).forEach(item => {
 						if (+checkbox.className.split('-')[1] === +item.className.split('-')[1]) {
 							item.classList.add('completed');
+							localStorage.setItem('classes', JSON.stringify(item.className.split(' ')[1]));
 						} else if (item.classList.contains('completed')) {
 							item.classList.remove('completed')
 						}
@@ -73,8 +79,7 @@ static delTask = (taskItem, index) => {
 				})
 			})
 
-			
-
+			// Check for complete tasks & change complete status to True 
 			function checkComplete() {
 				const itemId = +(document.getElementById(`${index}`).id);
 				if (document.getElementById(`${index}`).classList.contains('completed')) {
