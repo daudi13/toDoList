@@ -1,3 +1,4 @@
 webpack.config.js
 src/modules/listClass.js
-src/index.js
+src/modules/interactive.js
+src/modules/mainSec.js

@@ -1,8 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 import _, {} from 'lodash';
+import * as method from './modules/interactive.js';
 import UpdateUi from './modules/mainSec.js';
 import './style.css';
+import { refresh } from './modules/selectors.js';
 
-UpdateUi.updateSave();
+method.updateSave();
 
 UpdateUi.enterBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -12,3 +15,5 @@ UpdateUi.enterBtn.addEventListener('click', (e) => {
     UpdateUi.updateTask();
   }
 });
+
+refresh.addEventListener('click', method.refresh);
