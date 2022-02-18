@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import _, {} from 'lodash';
 import { updateSave } from './modules/interactive.js';
 import UpdateUi from './modules/mainSec.js';
