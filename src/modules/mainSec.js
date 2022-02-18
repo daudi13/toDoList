@@ -37,7 +37,7 @@ static delTask = (taskItem, index) => {
     UpdateUi.listblock.innerHTML = ' ';
     arrs.forEach((arr, index) => {
       const htmlTemp = `
-<li class="list-item" id="${index}"><input type="checkbox" name="todo-1"><p class="txt" contenteditable="true">${arr.task}</p><button class="btn-${index}"><i class="fa fa-trash-o"></i></button></li>
+<li class="item-${index}" id="${index}"><input type="checkbox" class="task-${index}" name="task-${index} value="job-${index}"><p class="txt" contenteditable="true">${arr.task}</p><button class="btn-${index}"><i class="fa fa-trash-o"></i></button></li>
 `;
       UpdateUi.listblock.insertAdjacentHTML('beforeend', htmlTemp);
       document.querySelectorAll(`.btn-${index}`).forEach((btn) => btn.addEventListener('click', (e) => {
@@ -56,7 +56,32 @@ static delTask = (taskItem, index) => {
             });
           }
         });
-      });
+			});
+
+			document.querySelectorAll(`.task-${index}`).forEach((checkbox) => {
+				checkbox.addEventListener('change', () => {
+					document.querySelectorAll(`.item-${index}`).forEach(item => {
+						if (+checkbox.className.split('-')[1] === +item.className.split('-')[1]) {
+							item.classList.add('completed');
+							checkComplete()
+						} else if (item.classList.contains('completed')) {
+							item.classList.remove('completed')
+						}
+					})
+				})
+			})
+
+			
+
+			function checkComplete() {
+				if (document.getElementById(`${index}`).classList.contains('completed')) {
+				const itemId = +(document.getElementById(`${index}`).id);
+					UpdateUi.taskArr[itemId].complete = true
+					localStorage.setItem('taskItems', JSON.stringify(UpdateUi.taskArr));
+				}
+			}
+
+			
     });
   }
 
