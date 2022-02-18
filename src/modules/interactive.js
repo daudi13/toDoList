@@ -1,17 +1,15 @@
 import UpdateUi from "../modules/mainSec.js";
 
+// status update
 
-
-
-export function clear() {
+export function clear () {
 	const newArr = UpdateUi.taskArr.filter(tasker => tasker.complete !== true);
 	localStorage.setItem('taskItems', JSON.stringify(newArr));
 	UpdateUi.addTasks(newArr);
 	location.reload();
 }
 
-
-	export const updateSave = () => {
+export function updateSave() {
 		if (localStorage.getItem('taskItems')) {
 			UpdateUi.taskArr = JSON.parse(localStorage.getItem('taskItems'));
 			UpdateUi.addTasks(UpdateUi.taskArr);
