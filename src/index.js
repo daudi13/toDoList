@@ -1,8 +1,9 @@
 import _, {} from 'lodash';
+import { updateSave } from './modules/interactive.js';
 import UpdateUi from './modules/mainSec.js';
 import './style.css';
 
-UpdateUi.updateSave();
+updateSave();
 
 UpdateUi.enterBtn.addEventListener('click', (e) => {
   e.preventDefault();
