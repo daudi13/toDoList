@@ -10,6 +10,8 @@ static input = selectors.input;
 
 static listblock = selectors.listblock;
 
+static clear = selectors.clear;
+
 // populating the ul with task
 
 static updateTask = () => {
@@ -63,10 +65,10 @@ static delTask = (taskItem, index) => {
 					document.querySelectorAll(`.item-${index}`).forEach(item => {
 						if (+checkbox.className.split('-')[1] === +item.className.split('-')[1]) {
 							item.classList.add('completed');
-							checkComplete()
 						} else if (item.classList.contains('completed')) {
 							item.classList.remove('completed')
 						}
+						checkComplete()
 					})
 				})
 			})
@@ -74,14 +76,17 @@ static delTask = (taskItem, index) => {
 			
 
 			function checkComplete() {
-				if (document.getElementById(`${index}`).classList.contains('completed')) {
 				const itemId = +(document.getElementById(`${index}`).id);
-					UpdateUi.taskArr[itemId].complete = true
+				if (document.getElementById(`${index}`).classList.contains('completed')) {
+					UpdateUi.taskArr[itemId].complete = true;
+					localStorage.setItem('taskItems', JSON.stringify(UpdateUi.taskArr));
+				} else {
+					UpdateUi.taskArr[itemId].complete = false;
 					localStorage.setItem('taskItems', JSON.stringify(UpdateUi.taskArr));
 				}
 			}
 
-			
+
     });
   }
 
@@ -95,3 +100,10 @@ static delTask = (taskItem, index) => {
     }
   }
 }
+
+UpdateUi.clear.addEventListener('click', () => {
+	const newArr = UpdateUi.taskArr.filter(tasker => tasker.complete !== true);
+	localStorage.setItem('taskItems', JSON.stringify(newArr));
+	UpdateUi.addTasks(newArr);
+	location.reload();
+})
