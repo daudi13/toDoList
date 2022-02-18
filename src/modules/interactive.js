@@ -18,3 +18,7 @@ export function updateSave() {
     UpdateUi.taskArr = [];
   }
 }
+
+export function refresh() {
+	location.reload();
+}
