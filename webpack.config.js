@@ -16,7 +16,7 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
 		clean: true,
-		publicPath: "/toDoList/",
+		publicPath: "/https://github.com/daudi13/toDoList/",
 
   },
   module: {
