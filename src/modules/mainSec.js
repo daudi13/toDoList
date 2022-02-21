@@ -26,6 +26,10 @@ export default class UpdateUi {
     UpdateUi.addTasks(UpdateUi.taskArr);
   }
 
+	static enterDefault() {
+		  window.addEventListener('keydown', (e) => { if (e.keyIdentifier === 'U+000A' || e.keyIdentifier === 'Enter' || e.keyCode === 13) { if (e.target.nodeName === 'INPUT' && e.target.type === 'text') { e.preventDefault(); return false; } } }, true);
+	}
+
   static delTask = (taskItem, index) => {
     const taskBlock = document.getElementById(index);
     UpdateUi.taskArr = UpdateUi.taskArr.filter((item) => item !== taskItem);
@@ -46,7 +50,8 @@ export default class UpdateUi {
 
        // Remove Button
        document.querySelectorAll(`.btn-${index}`).forEach((btn) => btn.addEventListener('click', (e) => {
-         e.preventDefault();
+				 e.preventDefault();
+				 UpdateUi.enterDefault();
          UpdateUi.delTask(arr, index);
        }));
 
